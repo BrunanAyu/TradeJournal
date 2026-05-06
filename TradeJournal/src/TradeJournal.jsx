@@ -103,7 +103,7 @@ function LogTrade({ onSave, onDone }) {
   const [form, setForm] = useState({
     pair: "EUR/USD", direction: "Buy", entry: "", exit: "",
     lot: "", sl: "", tp: "", setup: "Breakout", timeframe: "H1",
-    emotion: "Calm", result: "Win", notes: "", date: now,
+    emotion: "Calm", result: "Win",pic:"", notes: "", date: now,
   });
   const [msg, setMsg] = useState({ text: "", type: "" });
 
@@ -192,6 +192,9 @@ function LogTrade({ onSave, onDone }) {
             <select value={form.result} onChange={e => set("result", e.target.value)}>
               <option>Win</option><option>Loss</option><option>Break even</option>
             </select>
+          </Field>
+          <Field label="Picture">
+            <input type="text" placeholder="http" value={form.pic} onChange={e => set("pic", e.target.value)} />
           </Field>
           <Field label="Notes" full>
             <textarea placeholder="What happened? What did you learn?" value={form.notes} onChange={e => set("notes", e.target.value)} />

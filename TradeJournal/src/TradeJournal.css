@@ -1,0 +1,409 @@
+/* ── Root variables ── */
+:root {
+  --color-background-primary:   #ffffff;
+  --color-background-secondary: #f9fafb;
+  --color-background-tertiary:  #f3f4f6;
+  --color-background-info:      #eff6ff;
+  --color-background-success:   #f0fdf4;
+  --color-background-warning:   #fffbeb;
+  --color-background-danger:    #fef2f2;
+
+  --color-text-primary:         #111827;
+  --color-text-secondary:       #6b7280;
+  --color-text-tertiary:        #9ca3af;
+  --color-text-info:            #1d4ed8;
+  --color-text-success:         #15803d;
+  --color-text-warning:         #b45309;
+  --color-text-danger:          #dc2626;
+
+  --color-border-primary:       rgba(0,0,0,0.4);
+  --color-border-secondary:     rgba(0,0,0,0.3);
+  --color-border-tertiary:      rgba(0,0,0,0.12);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --border-radius-sm:  6px;
+  --border-radius-md:  8px;
+  --border-radius-lg:  12px;
+  --border-radius-xl:  16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-primary:   #1f2937;
+    --color-background-secondary: #111827;
+    --color-background-tertiary:  #0f172a;
+    --color-background-info:      #1e3a5f;
+    --color-background-success:   #14532d;
+    --color-background-warning:   #451a03;
+    --color-background-danger:    #450a0a;
+
+    --color-text-primary:         #f9fafb;
+    --color-text-secondary:       #9ca3af;
+    --color-text-tertiary:        #6b7280;
+    --color-text-info:            #93c5fd;
+    --color-text-success:         #86efac;
+    --color-text-warning:         #fcd34d;
+    --color-text-danger:          #fca5a5;
+
+    --color-border-primary:       rgba(255,255,255,0.4);
+    --color-border-secondary:     rgba(255,255,255,0.3);
+    --color-border-tertiary:      rgba(255,255,255,0.12);
+  }
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── App shell ── */
+.tj-app {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background: var(--color-background-tertiary);
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.tj-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--color-background-primary);
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tj-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tj-logo-mark {
+  width: 40px;
+  height: 40px;
+  background: var(--color-text-primary);
+  color: var(--color-background-primary);
+  border-radius: var(--border-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.tj-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.tj-subtitle {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  margin-top: 1px;
+}
+
+/* ── Nav ── */
+.tj-nav {
+  display: flex;
+  gap: 6px;
+}
+
+.tj-nav-btn {
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  background: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font-sans);
+}
+
+.tj-nav-btn:hover:not(.active) {
+  background: var(--color-background-secondary);
+  color: var(--color-text-primary);
+}
+
+.tj-nav-btn.active {
+  background: var(--color-text-primary);
+  color: var(--color-background-primary);
+  border-color: var(--color-text-primary);
+}
+
+/* ── Main content ── */
+.tj-main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+/* ── Stats grid ── */
+.tj-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.tj-stat-card {
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 1rem;
+}
+
+.tj-stat-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+
+.tj-stat-val {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.tj-stat-val.pos { color: var(--color-text-success); }
+.tj-stat-val.neg { color: var(--color-text-danger); }
+
+/* ── Cards ── */
+.tj-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.tj-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.tj-card-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+.tj-card-header .tj-card-title {
+  margin-bottom: 0;
+}
+
+.tj-count {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+}
+
+/* ── Section label ── */
+.tj-section-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 1rem;
+}
+
+/* ── Form grid ── */
+.tj-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ── Field ── */
+.tj-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tj-field.full {
+  grid-column: 1 / -1;
+}
+
+.tj-field label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.tj-field input,
+.tj-field select,
+.tj-field textarea {
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  background: var(--color-background-primary);
+  color: var(--color-text-primary);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+
+.tj-field input:focus,
+.tj-field select:focus,
+.tj-field textarea:focus {
+  border-color: var(--color-border-primary);
+  box-shadow: 0 0 0 3px rgba(100,100,100,0.08);
+}
+
+.tj-field input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.tj-field textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+/* ── Button row ── */
+.tj-btn-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 1.25rem;
+}
+
+.tj-btn-primary {
+  padding: 9px 22px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  border: none;
+  border-radius: var(--border-radius-md);
+  background: var(--color-text-primary);
+  color: var(--color-background-primary);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.tj-btn-primary:hover { opacity: 0.85; }
+.tj-btn-primary:active { transform: scale(0.98); }
+
+.tj-btn-secondary {
+  padding: 9px 22px;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  background: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.tj-btn-secondary:hover { background: var(--color-background-secondary); }
+
+/* ── Message ── */
+.tj-msg {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.tj-msg.ok  { color: var(--color-text-success); }
+.tj-msg.err { color: var(--color-text-danger); }
+
+/* ── Trade row ── */
+.tj-trade-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  gap: 12px;
+}
+
+.tj-trade-row:last-child { border-bottom: none; }
+
+.tj-trade-left { flex: 1; min-width: 0; }
+
+.tj-trade-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.tj-trade-pair {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.tj-trade-meta {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tj-trade-notes {
+  color: var(--color-text-secondary);
+}
+
+.tj-trade-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.tj-pnl {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.tj-pnl.pos { color: var(--color-text-success); }
+.tj-pnl.neg { color: var(--color-text-danger); }
+
+.tj-trade-prices {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  margin-top: 2px;
+}
+
+/* ── Badges ── */
+.tj-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.tj-badge.buy     { background: var(--color-background-info);    color: var(--color-text-info); }
+.tj-badge.sell    { background: var(--color-background-warning);  color: var(--color-text-warning); }
+.tj-badge.win     { background: var(--color-background-success);  color: var(--color-text-success); }
+.tj-badge.loss    { background: var(--color-background-danger);   color: var(--color-text-danger); }
+.tj-badge.be      { background: var(--color-background-tertiary); color: var(--color-text-secondary); }
+
+/* ── Empty state ── */
+.tj-empty {
+  text-align: center;
+  padding: 2rem;
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .tj-header { padding: 0.75rem 1rem; }
+  .tj-nav-btn { padding: 6px 10px; font-size: 12px; }
+  .tj-form-grid { grid-template-columns: 1fr; }
+  .tj-field.full { grid-column: 1; }
+  .tj-stats-grid { grid-template-columns: 1fr 1fr; }
+}
